@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlowSkin | Checkout</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #faf9f5;
+      color: #303a30;
+    }
+
+    header {
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e9e7df;
+      background: #faf9f5;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      font-weight: 700;
+      color: #344b3c;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #455347;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .page-heading {
+      text-align: center;
+      padding: 55px 20px 35px;
+    }
+
+    .eyebrow {
+      color: #71866e;
+      font-size: 11px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      margin-bottom: 13px;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+    }
+
+    .page-heading h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .page-heading p {
+      color: #7b8278;
+      font-size: 14px;
+    }
+
+    .checkout-container {
+      max-width: 1100px;
+      margin: 0 auto 80px;
+      padding: 0 25px;
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .checkout-card {
+      background: white;
+      border: 1px solid #eeece5;
+      padding: 30px;
+    }
+
+    .checkout-card h2 {
+      font-size: 25px;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #455347;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #dce2d8;
+      background: #fff;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #71866e;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 85px;
+    }
+
+    .place-order-btn {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #405a43;
+      background: #405a43;
+      color: white;
+      font-family: inherit;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    .place-order-btn:hover {
+      background: white;
+      color: #405a43;
+    }
+
+    .order-item {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #eeece5;
+    }
+
+    .order-item img {
+      width: 65px;
+      height: 70px;
+      object-fit: cover;
+      background: #f0f0e9;
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .item-info p {
+      color: #7b8278;
+      font-size: 12px;
+    }
+
+    .item-price {
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 18px;
+      font-size: 13px;
+    }
+
+    .summary-total {
+      border-top: 1px solid #dce2d8;
+      padding-top: 18px;
+      margin-top: 20px;
+      font-size: 17px;
+      font-weight: 700;
+      color: #405a43;
+    }
+
+    .empty-message {
+      text-align: center;
+      padding: 30px 10px;
+      color: #71866e;
+      line-height: 1.8;
+    }
+
+    .continue-link {
+      display: inline-block;
+      margin-top: 15px;
+      color: #405a43;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .success-message {
+      display: none;
+      max-width: 650px;
+      margin: 40px auto 80px;
+      padding: 45px 25px;
+      background: white;
+      border: 1px solid #dce2d8;
+      text-align: center;
+    }
+
+    .success-message h2 {
+      color: #405a43;
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .success-message p {
+      color: #71806f;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .success-message a {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 13px 25px;
+      background: #405a43;
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .demo-note {
+      color: #8a8f84;
+      font-size: 11px;
+      line-height: 1.6;
+      margin-top: 15px;
+    }
+
+    footer {
+      background: #344b3c;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 750px) {
+      .checkout-container {
+        grid-template-columns: 1fr;
+      }
+
+      .page-heading h1 {
+        font-size: 34px;
+      }
+
+      .checkout-card {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      header {
+        padding: 18px 5%;
+      }
+
+      .logo {
+        font-size: 23px;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="/skincare" class="logo">GlowSkin.</a>
+
+    <nav>
+      <a href="/skincare">HOME</a>
+      <a href="/products">SHOP</a>
+      <a href="/cart">CART</a>
+    </nav>
+  </header>
+
+  <section class="page-heading">
+    <div class="eyebrow">ALMOST YOURS</div>
+    <h1>Checkout</h1>
+    <p>Complete your order with a few simple details.</p>
+  </section>
+
+  <main id="checkoutArea" class="checkout-container">
+
+    <section class="checkout-card">
+      <h2>Delivery Details</h2>
+
+      <form id="checkoutForm">
+
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Delivery Address</label>
+          <textarea id="address" placeholder="Enter your delivery address" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="Enter your city" required>
+        </div>
+
+        <div class="form-group">
+          <label for="pincode">PIN Code</label>
+          <input type="text" id="pincode" inputmode="numeric"
+                 pattern="[0-9]{6}" maxlength="6"
+                 placeholder="Enter 6-digit PIN code" required>
+        </div>
+
+        <div class="form-group">
+          <label for="payment">Payment Method</label>
+          <input type="text" id="payment" value="Cash on Delivery (Demo)" readonly>
+        </div>
+
+        <button type="submit" class="place-order-btn">
+          PLACE DEMO ORDER
+        </button>
+
+        <p class="demo-note">
+          This is a portfolio demonstration only. No real payment will be taken
+          and no delivery will be arranged. Use sample details while testing.
+        </p>
+
+      </form>
+    </section>
+
+    <section class="checkout-card">
+      <h2>Your Order</h2>
+
+      <div id="orderItems"></div>
+
+      <div id="orderTotals">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <strong id="subtotal">$0.00</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Shipping</span>
+          <strong id="shipping">FREE</strong>
+        </div>
+
+        <div class="summary-row summary-total">
+          <span>Total</span>
+          <strong id="total">$0.00</strong>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="success-message" id="successMessage">
+    <h2>Thank You for Your Order!</h2>
+    <p>
+      Your demo order has been placed successfully.
+      Thank you for choosing GlowSkin.
+    </p>
+    <a href="/products">CONTINUE SHOPPING</a>
+  </section>
+
+  <footer>
+    © 2026 GlowSkin. All Rights Reserved.
+  </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const orderItems = document.getElementById("orderItems");
+    const checkoutForm = document.getElementById("checkoutForm");
+    const checkoutArea = document.getElementById("checkoutArea");
+    const successMessage = document.getElementById("successMessage");
+
+    function displayOrder() {
+      orderItems.innerHTML = "";
+
+      if (cart.length === 0) {
+        orderItems.innerHTML = `
+          <div class="empty-message">
+            Your cart is empty.<br>
+            <a href="/products" class="continue-link">Explore Products</a>
+          </div>
+        `;
+
+        checkoutForm.style.display = "none";
+        document.getElementById("orderTotals").style.display = "none";
+        return;
+      }
+
+      let subtotal = 0;
+
+      cart.forEach(item => {
+        const quantity = Number(item.quantity) || 1;
+        const itemTotal = Number(item.price) * quantity;
+        subtotal += itemTotal;
+
+        orderItems.innerHTML += `
+          <div class="order-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="item-info">
+              <h3>${item.name}</h3>
+              <p>Quantity: ${quantity}</p>
+            </div>
+            <div class="item-price">$${itemTotal.toFixed(2)}</div>
+          </div>
+        `;
+      });
+
+      document.getElementById("subtotal").textContent =
+        "$" + subtotal.toFixed(2);
+
+      document.getElementById("total").textContent =
+        "$" + subtotal.toFixed(2);
+    }
+
+    checkoutForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (cart.length === 0) {
+        alert("Your cart is empty. Please add a product first.");
+        return;
+      }
+
+      alert("Your demo order has been placed successfully!");
+
+      localStorage.removeItem("cart");
+      cart = [];
+
+      checkoutArea.style.display = "none";
+      successMessage.style.display = "block";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+    displayOrder();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlowSkin | Your Cart</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #faf9f5;
+      color: #303a30;
+    }
+
+    .announcement {
+      background: #344b3c;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    header {
+      background: #faf9f5;
+      padding: 22px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e9e7df;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      font-weight: 700;
+      color: #344b3c;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #455347;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #82977e;
+    }
+
+    .hero {
+      background: #e9eee5;
+      text-align: center;
+      padding: 65px 20px;
+    }
+
+    .eyebrow {
+      color: #71866e;
+      font-size: 11px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 500;
+    }
+
+    .hero p {
+      color: #687467;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 55px 25px 90px;
+    }
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .cart-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 27px;
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: white;
+      padding: 18px;
+      border: 1px solid #eeece5;
+      margin-bottom: 16px;
+    }
+
+    .cart-item img {
+      width: 105px;
+      height: 110px;
+      object-fit: cover;
+      background: #f0f0e9;
+    }
+
+    .cart-item-details {
+      flex: 1;
+    }
+
+    .cart-item-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .cart-item-price {
+      color: #71866e;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 13px;
+    }
+
+    .quantity-controls button {
+      width: 27px;
+      height: 27px;
+      background: #e9eee5;
+      border: none;
+      cursor: pointer;
+      color: #344b3c;
+      font-size: 17px;
+    }
+
+    .quantity {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .item-subtotal {
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 10px;
+      color: #344b3c;
+    }
+
+    .remove-btn {
+      border: none;
+      background: transparent;
+      color: #a56e63;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: inherit;
+      margin-top: 12px;
+    }
+
+    .remove-btn:hover {
+      text-decoration: underline;
+    }
+
+    .summary {
+      background: white;
+      border: 1px solid #eeece5;
+      padding: 28px;
+    }
+
+    .summary h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 25px;
+      font-weight: 500;
+      margin-bottom: 25px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 18px;
+      color: #727b70;
+    }
+
+    .summary-total {
+      border-top: 1px solid #e5e5dc;
+      padding-top: 20px;
+      margin-top: 20px;
+      color: #344b3c;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    /* Premium Checkout Button */
+    .checkout-btn {
+      width: 100%;
+      padding: 17px 20px;
+      border: 1px solid #344b3c;
+      background: #344b3c;
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .checkout-btn:hover {
+      background: #e9eee5;
+      color: #344b3c;
+      border-color: #344b3c;
+    }
+
+    .checkout-arrow {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .checkout-btn:hover .checkout-arrow {
+      transform: translateX(5px);
+    }
+
+    .continue-shopping {
+      display: block;
+      text-align: center;
+      color: #526b54;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 20px;
+    }
+
+    .continue-shopping:hover {
+      text-decoration: underline;
+    }
+
+    .clear-cart {
+      background: transparent;
+      border: none;
+      color: #a56e63;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    .empty-cart {
+      background: white;
+      padding: 65px 20px;
+      text-align: center;
+      border: 1px solid #eeece5;
+    }
+
+    .empty-cart h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .empty-cart p {
+      color: #7a8078;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .shop-btn {
+      display: inline-block;
+      background: #405a43;
+      color: white;
+      text-decoration: none;
+      padding: 13px 25px;
+      font-size: 12px;
+    }
+
+    footer {
+      background: #344b3c;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 750px) {
+      .cart-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      header {
+        padding: 18px 5%;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+
+      .cart-item {
+        gap: 12px;
+        padding: 12px;
+      }
+
+      .cart-item img {
+        width: 80px;
+        height: 90px;
+      }
+
+      .cart-item-name {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    A LITTLE SELF-CARE GOES A LONG WAY
+  </div>
+
+  <header>
+    <a href="/skincare" class="logo">GlowSkin.</a>
+
+    <nav>
+      <a href="/skincare">HOME</a>
+      <a href="/products">SHOP</a>
+      <a href="/cart">CART</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">YOUR GLOWSKIN SELECTION</div>
+    <h1>Your Shopping Cart</h1>
+    <p>Your favourite skincare essentials, all in one place.</p>
+  </section>
+
+  <main>
+    <div id="cartContent"></div>
+  </main>
+
+  <footer>
+    © 2026 GlowSkin. All Rights Reserved.
+  </footer>
+
+  <script>
+    const cartContent = document.getElementById("cartContent");
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function saveCart() {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function renderCart() {
+      cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      if (cart.length === 0) {
+        cartContent.innerHTML = `
+          <div class="empty-cart">
+            <h2>Your Cart is Empty</h2>
+            <p>Looks like you haven't added anything yet.</p>
+            <a href="/products" class="shop-btn">EXPLORE PRODUCTS</a>
+          </div>
+        `;
+        return;
+      }
+
+      let total = 0;
+      let totalItems = 0;
+
+      let itemsHTML = "";
+
+      cart.forEach(item => {
+        const quantity = Number(item.quantity) || 1;
+        const subtotal = Number(item.price) * quantity;
+
+        total += subtotal;
+        totalItems += quantity;
+
+        itemsHTML += `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}">
+
+            <div class="cart-item-details">
+              <div class="cart-item-name">${item.name}</div>
+
+              <div class="cart-item-price">
+                $${Number(item.price).toFixed(2)} each
+              </div>
+
+              <div class="quantity-controls">
+                <button onclick="changeQuantity(${item.id}, -1)">−</button>
+                <span class="quantity">${quantity}</span>
+                <button onclick="changeQuantity(${item.id}, 1)">+</button>
+              </div>
+
+              <div class="item-subtotal">
+                Subtotal: $${subtotal.toFixed(2)}
+              </div>
+
+              <button class="remove-btn"
+                onclick="removeItem(${item.id})">
+                Remove item
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      cartContent.innerHTML = `
+        <div class="cart-layout">
+
+          <section>
+            <h2 class="cart-heading">
+              Your Items (${totalItems})
+            </h2>
+
+            ${itemsHTML}
+
+            <button class="clear-cart" onclick="clearCart()">
+              Clear entire cart
+            </button>
+
+            <a href="/products" class="continue-shopping">
+              ← CONTINUE SHOPPING
+            </a>
+          </section>
+
+          <aside class="summary">
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+              <span>Total Items</span>
+              <span>${totalItems}</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span>$${total.toFixed(2)}</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span>Free</span>
+            </div>
+
+            <div class="summary-row summary-total">
+              <span>Total</span>
+              <span>$${total.toFixed(2)}</span>
+            </div>
+
+            <button class="checkout-btn"
+              onclick="window.location.href='/checkout'">
+              <span>PROCEED TO CHECKOUT</span>
+              <span class="checkout-arrow">→</span>
+            </button>
+
+          </aside>
+
+        </div>
+      `;
+    }
+
+    function changeQuantity(id, change) {
+      const item = cart.find(product => product.id === id);
+
+      if (!item) return;
+
+      item.quantity = (Number(item.quantity) || 1) + change;
+
+      if (item.quantity <= 0) {
+        cart = cart.filter(product => product.id !== id);
+      }
+
+      saveCart();
+      renderCart();
+    }
+
+    function removeItem(id) {
+      cart = cart.filter(item => item.id !== id);
+      saveCart();
+      renderCart();
+    }
+
+    function clearCart() {
+      cart = [];
+      saveCart();
+      renderCart();
+    }
+
+    renderCart();
+  </script>
+
+</body>
+</html>

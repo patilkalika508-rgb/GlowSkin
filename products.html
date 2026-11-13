@@ -1,0 +1,948 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlowSkin | Our Products</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #faf9f5;
+      color: #303a30;
+    }
+
+    .announcement {
+      background: #344b3c;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    header {
+      background: #faf9f5;
+      padding: 22px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e9e7df;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      font-weight: 700;
+      color: #344b3c;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #455347;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #82977e;
+    }
+
+    .hero {
+      background: #e9eee5;
+      text-align: center;
+      padding: 75px 20px;
+    }
+
+    .eyebrow {
+      color: #71866e;
+      font-size: 11px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 5vw, 55px);
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #687467;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 30px 7% 0;
+      color: #526b54;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1250px;
+      margin: auto;
+      padding: 35px 30px 90px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      font-size: 13px;
+      color: #7b8278;
+    }
+
+    /* Search bar */
+
+    .shop-controls {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    #searchInput {
+      width: 100%;
+      max-width: 450px;
+      padding: 15px 20px;
+      border: 1px solid #dce2d8;
+      background: white;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+      margin-bottom: 22px;
+    }
+
+    #searchInput:focus {
+      border-color: #71866e;
+    }
+
+    /* Sorting */
+
+    .sort-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0 30px;
+      color: #405a43;
+      font-size: 13px;
+    }
+
+    #sortSelect {
+      padding: 11px 15px;
+      border: 1px solid #dce2d8;
+      background: white;
+      color: #405a43;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    #sortSelect:focus {
+      border-color: #71866e;
+    }
+
+    /* Category filters */
+
+    .category-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      border: 1px solid #405a43;
+      background: transparent;
+      color: #405a43;
+      font-family: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #405a43;
+      color: white;
+    }
+
+    .no-results {
+      text-align: center;
+      color: #71866e;
+      padding: 30px;
+      font-size: 14px;
+    }
+
+    /* Product cards */
+
+    .products-container {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    .product {
+      background: #fff;
+      border: 1px solid #eeece5;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(49, 65, 49, 0.09);
+    }
+
+    .image-wrap {
+      height: 250px;
+      background: #f0f0e9;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .product img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .product:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-details {
+      padding: 20px 17px;
+    }
+
+    .product-tag {
+      color: #82977e;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 9px;
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 600;
+      margin-bottom: 9px;
+      cursor: pointer;
+    }
+
+    .product-name:hover {
+      color: #71866e;
+    }
+
+    .product-desc {
+      color: #7a8078;
+      font-size: 12px;
+      line-height: 1.7;
+      min-height: 42px;
+      margin-bottom: 15px;
+    }
+
+    .product-price {
+      font-size: 16px;
+      font-weight: 700;
+      color: #405a43;
+      margin-bottom: 16px;
+    }
+
+    .add-to-cart-btn {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #405a43;
+      background: #405a43;
+      color: white;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .add-to-cart-btn:hover {
+      background: #fff;
+      color: #405a43;
+    }
+
+    .add-to-cart-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    /* Bottom banner */
+
+    .bottom-banner {
+      background: #e9eee5;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .bottom-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .bottom-banner p {
+      color: #6e796d;
+      font-size: 13px;
+    }
+
+    footer {
+      background: #344b3c;
+      color: #fff;
+      text-align: center;
+      padding: 25px;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Cart notification */
+
+    .toast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #344b3c;
+      color: white;
+      padding: 15px 22px;
+      font-size: 13px;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: 0.3s;
+      z-index: 1100;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Product details popup */
+
+    .product-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      position: relative;
+      background: #faf9f6;
+      width: 100%;
+      max-width: 750px;
+      display: flex;
+      gap: 30px;
+      padding: 35px;
+      align-items: center;
+      animation: modalOpen 0.25s ease;
+    }
+
+    @keyframes modalOpen {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-content img {
+      width: 45%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .modal-details {
+      flex: 1;
+    }
+
+    .modal-details h2 {
+      font-family: 'Playfair Display', serif;
+      color: #263d2c;
+      margin: 15px 0;
+    }
+
+    .modal-details p {
+      line-height: 1.7;
+      color: #71806f;
+    }
+
+    .modal-details h3 {
+      color: #405a43;
+      margin: 20px 0;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 18px;
+      border: none;
+      background: none;
+      font-size: 30px;
+      cursor: pointer;
+      color: #405a43;
+    }
+
+    .modal-content .add-to-cart-btn {
+      padding: 13px 22px;
+    }
+
+    #cartMessage {
+      display: none;
+      color: #405a43;
+      margin-top: 15px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* Responsive design */
+
+    @media (max-width: 900px) {
+      .products-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .modal-content {
+        flex-direction: column;
+        padding: 25px;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-content img {
+        width: 100%;
+        height: 220px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      header {
+        padding: 18px 5%;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+
+      .products-container {
+        grid-template-columns: 1fr;
+      }
+
+      .image-wrap {
+        height: 280px;
+      }
+
+      main {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .category-filters {
+        gap: 8px;
+      }
+
+      .filter-btn {
+        padding: 9px 13px;
+      }
+
+      .sort-container {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    A LITTLE SELF-CARE GOES A LONG WAY
+  </div>
+
+  <header>
+    <a href="/skincare" class="logo">GlowSkin.</a>
+
+    <nav>
+      <a href="/skincare">HOME</a>
+      <a href="/products">SHOP</a>
+      <a href="/cart">CART</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">THE GLOWSKIN COLLECTION</div>
+    <h1>Find Your Everyday Glow</h1>
+    <p>Thoughtfully selected skincare essentials for your everyday routine.</p>
+  </section>
+
+  <a href="/skincare" class="back-link">← Back to Home</a>
+
+  <main>
+
+    <div class="section-heading">
+      <div class="eyebrow">OUR COLLECTION</div>
+      <h2>Explore Our Products</h2>
+      <p>Simple essentials. Thoughtful care. Everyday confidence.</p>
+    </div>
+
+    <!-- Search, sorting and filters -->
+
+    <div class="shop-controls">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search your skincare products..."
+      >
+
+      <div class="sort-container">
+        <label for="sortSelect">Sort By:</label>
+
+        <select id="sortSelect">
+          <option value="default">Default Order</option>
+          <option value="lowToHigh">Price: Low to High</option>
+          <option value="highToLow">Price: High to Low</option>
+        </select>
+      </div>
+
+      <div class="category-filters">
+        <button class="filter-btn active" data-category="All">All</button>
+        <button class="filter-btn" data-category="Moisturizers">Moisturizers</button>
+        <button class="filter-btn" data-category="Serums">Serums</button>
+        <button class="filter-btn" data-category="Sunscreen">Sunscreen</button>
+        <button class="filter-btn" data-category="Cleansers">Cleansers</button>
+      </div>
+
+    </div>
+
+    <p id="noResults" class="no-results" style="display:none;">
+      No products found. Try another search!
+    </p>
+
+    <!-- Products will appear here -->
+
+    <div class="products-container" id="productsContainer">
+    </div>
+
+  </main>
+
+  <section class="bottom-banner">
+    <h2>Your Skin, Your Routine.</h2>
+    <p>Make a little time for yourself every day.</p>
+  </section>
+
+  <footer>
+    © 2026 GlowSkin. All Rights Reserved.
+  </footer>
+
+  <!-- Cart notification -->
+
+  <div class="toast" id="toast">Product added to your cart!</div>
+
+  <!-- Product Details Popup: placed BEFORE JavaScript -->
+
+  <div id="productModal" class="product-modal">
+
+    <div class="modal-content">
+
+      <button class="close-modal" id="closeModal">&times;</button>
+
+      <img id="modalImage" src="" alt="Product Image">
+
+      <div class="modal-details">
+
+        <p id="modalCategory" class="product-tag"></p>
+
+        <h2 id="modalName"></h2>
+
+        <p id="modalDescription"></p>
+
+        <h3 id="modalPrice"></h3>
+
+        <button id="modalAddToCart" class="add-to-cart-btn">
+          ADD TO CART
+        </button>
+
+        <p id="cartMessage">
+          ✓ Product added to cart successfully!
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- JavaScript starts here -->
+
+  <script>
+
+    // Product information
+
+    const products = [
+      {
+        id: 1,
+        name: "Hydrating Face Cream",
+        tag: "Daily Moisture",
+        category: "Moisturizers",
+        image: "https://anahataorganic.com/cdn/shop/files/nava-cream.jpg?v=1711188595&width=1946",
+        desc: "Keeps your skin moisturized all day long.",
+        price: 25.99
+      },
+      {
+        id: 2,
+        name: "Vitamin C Serum",
+        tag: "Skin Essential",
+        category: "Serums",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ6iMwH9C6Hy1uQdPKmbqTa_dvn18aBPJssg&s",
+        desc: "A lightweight serum for your skincare routine.",
+        price: 34.50
+      },
+      {
+        id: 3,
+        name: "Sunscreen SPF 50",
+        tag: "Sun Protection",
+        category: "Sunscreen",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVQ5E-Osaof6FSHJSI9oycrTmRIEypi30kYw&s",
+        desc: "Helps protect your skin from harmful UV rays.",
+        price: 19.99
+      },
+      {
+        id: 4,
+        name: "Gentle Face Cleanser",
+        tag: "Daily Cleanse",
+        category: "Cleansers",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGvpJwxMVgRSpWXqA-6gmkACDGWItu1uRRuQ&s",
+        desc: "Gently removes dirt and everyday impurities.",
+        price: 15.00
+      }
+    ];
+
+    const productsContainer = document.getElementById("productsContainer");
+
+    let selectedCategory = "All";
+    let selectedSort = "default";
+
+    // Display products
+
+    function renderProducts() {
+
+      const searchText = document
+        .getElementById("searchInput")
+        .value.toLowerCase()
+        .trim();
+
+      const filteredProducts = products.filter(product => {
+
+        const matchesSearch =
+          product.name.toLowerCase().includes(searchText);
+
+        const matchesCategory =
+          selectedCategory === "All" ||
+          product.category === selectedCategory;
+
+        return matchesSearch && matchesCategory;
+      });
+
+      // Sorting
+
+      if (selectedSort === "lowToHigh") {
+        filteredProducts.sort((a, b) => a.price - b.price);
+      }
+
+      if (selectedSort === "highToLow") {
+        filteredProducts.sort((a, b) => b.price - a.price);
+      }
+
+      productsContainer.innerHTML = "";
+
+      document.getElementById("noResults").style.display =
+        filteredProducts.length === 0 ? "block" : "none";
+
+      filteredProducts.forEach(product => {
+
+        const productDiv = document.createElement("div");
+        productDiv.className = "product";
+
+        productDiv.innerHTML = `
+          <div class="image-wrap">
+            <img src="${product.image}" alt="${product.name}">
+          </div>
+
+          <div class="product-details">
+            <div class="product-tag">${product.tag}</div>
+            <div class="product-name">${product.name}</div>
+            <div class="product-desc">${product.desc}</div>
+            <div class="product-price">$${product.price.toFixed(2)}</div>
+
+            <button class="add-to-cart-btn" data-id="${product.id}">
+              ADD TO CART
+            </button>
+          </div>
+        `;
+
+        productsContainer.appendChild(productDiv);
+      });
+    }
+
+    // Add product to cart
+
+    function addToCart(id) {
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const product = products.find(item => item.id === id);
+
+      if (!product) return;
+
+      const existing = cart.find(item => item.id === id);
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Show notification
+
+      const toast = document.getElementById("toast");
+
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2000);
+    }
+
+    // Search products
+
+    document.getElementById("searchInput").addEventListener("input", renderProducts);
+
+    // Filter products by category
+
+    document.querySelectorAll(".filter-btn").forEach(button => {
+
+      button.addEventListener("click", function() {
+
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+          btn.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+        selectedCategory = this.dataset.category;
+
+        renderProducts();
+      });
+
+    });
+
+    // Sort products by price
+
+    document.getElementById("sortSelect").addEventListener("change", function() {
+
+      selectedSort = this.value;
+
+      renderProducts();
+    });
+
+    // Handle product card clicks
+
+    productsContainer.addEventListener("click", function(event) {
+
+      // Normal Add to Cart button
+
+      const cartButton = event.target.closest(".add-to-cart-btn");
+
+      if (cartButton) {
+
+        const id = Number(cartButton.dataset.id);
+
+        addToCart(id);
+
+        return;
+      }
+
+      // Open popup when image or product name is clicked
+
+      const clickedProduct = event.target.closest(".image-wrap, .product-name");
+
+      if (clickedProduct) {
+
+        const productDiv = clickedProduct.closest(".product");
+
+        const button = productDiv.querySelector(".add-to-cart-btn");
+
+        const id = Number(button.dataset.id);
+
+        showProductDetails(id);
+      }
+
+    });
+
+    // Show product details popup
+
+    function showProductDetails(id) {
+
+      const product = products.find(item => item.id === id);
+
+      if (!product) return;
+
+      document.getElementById("modalImage").src = product.image;
+
+      document.getElementById("modalName").textContent = product.name;
+
+      document.getElementById("modalCategory").textContent = product.category;
+
+      document.getElementById("modalDescription").textContent = product.desc;
+
+      document.getElementById("modalPrice").textContent =
+        "$" + product.price.toFixed(2);
+
+      document.getElementById("modalAddToCart").dataset.id = product.id;
+
+      document.getElementById("cartMessage").style.display = "none";
+
+      document.getElementById("modalAddToCart").textContent = "ADD TO CART";
+
+      document.getElementById("modalAddToCart").disabled = false;
+
+      document.getElementById("productModal").style.display = "flex";
+    }
+
+    // Close popup using cross button
+
+    document.getElementById("closeModal").addEventListener("click", function() {
+
+      document.getElementById("productModal").style.display = "none";
+
+    });
+
+    // Close popup when clicking outside
+
+    document.getElementById("productModal").addEventListener("click", function(event) {
+
+      if (event.target === this) {
+
+        this.style.display = "none";
+
+      }
+
+    });
+
+    // Add product to cart from popup
+
+    document.getElementById("modalAddToCart").addEventListener("click", function() {
+
+      const id = Number(this.dataset.id);
+
+      if (!id || this.disabled) return;
+
+      // Add product to cart
+
+      addToCart(id);
+
+      // Show success message
+
+      const message = document.getElementById("cartMessage");
+
+      message.style.display = "block";
+
+      this.textContent = "ADDED ✓";
+
+      this.disabled = true;
+
+      // Close popup after 1.5 seconds
+
+      setTimeout(() => {
+
+        document.getElementById("productModal").style.display = "none";
+
+        message.style.display = "none";
+
+        this.textContent = "ADD TO CART";
+
+        this.disabled = false;
+
+      }, 1500);
+
+    });
+
+    // Display products when page loads
+
+    renderProducts();
+
+  </script>
+
+</body>
+</html>

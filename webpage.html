@@ -1,0 +1,1201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlowSkin | Your Natural Glow</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f8f6f0;
+      --white: #ffffff;
+      --sage: #a5b397;
+      --dark-green: #344536;
+      --light-green: #e8ede3;
+      --text: #343a32;
+      --muted: #777c73;
+      --border: #e8e8df;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /* Announcement bar */
+
+    .announcement {
+      background: var(--dark-green);
+      color: white;
+      text-align: center;
+      padding: 9px 15px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* Navigation */
+
+    header {
+      background: rgba(255,255,255,0.96);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 17px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 31px;
+      font-weight: 700;
+      color: var(--dark-green);
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--sage);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #849477;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .cart-link {
+      background: var(--light-green);
+      padding: 10px 17px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark-green);
+    }
+
+    .cart-count {
+      background: var(--dark-green);
+      color: white;
+      padding: 2px 7px;
+      border-radius: 50%;
+      margin-left: 5px;
+      font-size: 11px;
+    }
+
+    /* Hero section */
+
+    .hero {
+      max-width: 1200px;
+      margin: 35px auto;
+      padding: 0 30px;
+    }
+
+    .hero-content {
+      min-height: 510px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #e9eee5;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .hero-text {
+      padding: 70px 55px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .eyebrow {
+      color: #77876c;
+      font-size: 12px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 5vw, 65px);
+      font-weight: 500;
+      line-height: 1.12;
+      color: var(--dark-green);
+      margin-bottom: 22px;
+    }
+
+    .hero h1 em {
+      color: #87977b;
+      font-weight: 400;
+    }
+
+    .hero-description {
+      max-width: 420px;
+      font-size: 15px;
+      color: #687064;
+      margin-bottom: 30px;
+    }
+
+    .primary-btn {
+      display: inline-block;
+      background: var(--dark-green);
+      color: white;
+      padding: 14px 29px;
+      border: none;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .primary-btn:hover {
+      background: #566c54;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      min-height: 510px;
+      background:
+        url("https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1100&q=85")
+        center/cover no-repeat;
+    }
+
+    /* Features */
+
+    .features {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 35px 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .feature {
+      padding: 22px 15px;
+      border-right: 1px solid var(--border);
+    }
+
+    .feature:last-child {
+      border: none;
+    }
+
+    .feature-icon {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .feature h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      color: var(--dark-green);
+      margin-bottom: 5px;
+    }
+
+    .feature p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Common sections */
+
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 75px 30px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-heading .eyebrow {
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--dark-green);
+    }
+
+    .section-heading p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* Categories */
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .category-card {
+      height: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      transition: transform 0.3s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .category-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 35%, rgba(0,0,0,0.6));
+    }
+
+    .category-card h3 {
+      position: relative;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 27px;
+      padding: 25px;
+    }
+
+    .cat-one {
+      background-image: url("https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=80");
+    }
+
+    .cat-two {
+      background-image: url("https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=700&q=80");
+    }
+
+    .cat-three {
+      background-image: url("https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=80");
+    }
+
+    /* Best sellers */
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 9px;
+      overflow: hidden;
+      border: 1px solid #eeeee7;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(44,60,43,0.09);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 235px;
+      object-fit: cover;
+      background: #f1f0e9;
+    }
+
+    .product-info {
+      padding: 18px;
+    }
+
+    .product-tag {
+      color: #849477;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .product-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      margin: 7px 0;
+    }
+
+    .product-desc {
+      color: var(--muted);
+      font-size: 12px;
+      min-height: 38px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 15px;
+      gap: 8px;
+    }
+
+    .price {
+      color: var(--dark-green);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .add-btn {
+      border: 1px solid var(--dark-green);
+      color: var(--dark-green);
+      background: white;
+      padding: 9px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .add-btn:hover {
+      background: var(--dark-green);
+      color: white;
+    }
+
+    .center-btn {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* Brand story */
+
+    .story {
+      background: #e9eee5;
+      padding: 75px 30px;
+    }
+
+    .story-content {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .story-image {
+      height: 400px;
+      background: url("https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=900&q=85") center/cover;
+      border-radius: 10px;
+    }
+
+    .story-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      line-height: 1.2;
+      color: var(--dark-green);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .story-text p {
+      color: #687064;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    /* Testimonials */
+
+    .testimonials {
+      background: white;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .review {
+      background: var(--cream);
+      padding: 28px;
+      border-radius: 9px;
+    }
+
+    .stars {
+      color: #b18b50;
+      letter-spacing: 3px;
+      margin-bottom: 13px;
+    }
+
+    .review p {
+      color: #656a60;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .review h4 {
+      color: var(--dark-green);
+      font-size: 13px;
+    }
+
+    /* Newsletter */
+
+    .newsletter {
+      text-align: center;
+      padding: 65px 25px;
+      background: var(--light-green);
+    }
+
+    .newsletter h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 35px;
+      color: var(--dark-green);
+    }
+
+    .newsletter p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 10px 0 22px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      justify-content: center;
+      max-width: 460px;
+      margin: auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 13px;
+      border: 1px solid #d6ddcf;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+      background: white;
+    }
+
+    .newsletter-form button {
+      border: none;
+      background: var(--dark-green);
+      color: white;
+      padding: 13px 20px;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* Footer */
+
+    footer {
+      background: #29382b;
+      color: white;
+      padding: 55px 30px 20px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 50px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .footer-content p {
+      color: #c3ccbd;
+      font-size: 13px;
+      max-width: 340px;
+    }
+
+    .footer-content h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 15px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #c3ccbd;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid #536253;
+      color: #c3ccbd;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    /* Toast message */
+
+    .toast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--dark-green);
+      color: white;
+      padding: 14px 22px;
+      border-radius: 6px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(15px);
+      pointer-events: none;
+      transition: 0.3s;
+      z-index: 200;
+      font-size: 13px;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive design */
+
+    @media (max-width: 900px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-text {
+        padding: 45px 30px;
+      }
+
+      .hero-content {
+        min-height: 420px;
+      }
+
+      .hero-image {
+        min-height: 420px;
+      }
+
+      .nav-links {
+        gap: 17px;
+      }
+
+      .story-content {
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .navbar {
+        padding: 14px 17px;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        font-size: 26px;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 25px;
+      }
+
+      .nav-actions {
+        gap: 5px;
+      }
+
+      .hero {
+        padding: 0 15px;
+        margin: 20px auto;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text {
+        padding: 45px 25px;
+      }
+
+      .hero-image {
+        min-height: 270px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .feature {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .section {
+        padding: 55px 18px;
+      }
+
+      .section-heading h2 {
+        font-size: 31px;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-card {
+        height: 260px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .product-card img {
+        height: 165px;
+      }
+
+      .product-info {
+        padding: 12px;
+      }
+
+      .product-info h3 {
+        font-size: 15px;
+      }
+
+      .product-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .story-content {
+        grid-template-columns: 1fr;
+      }
+
+      .story-image {
+        height: 280px;
+      }
+
+      .story-text h2 {
+        font-size: 34px;
+      }
+
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .newsletter-form input,
+      .newsletter-form button {
+        border-radius: 4px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    A LITTLE SELF-CARE GOES A LONG WAY · WELCOME TO GLOWSKIN
+  </div>
+
+<header>
+  <nav class="navbar">
+
+    <a href="/skincare" class="logo">Glow<span>Skin.</span></a>
+
+    <div class="nav-links">
+      <a href="/skincare">Home</a>
+      <a href="/products">Shop</a>
+      <a href="/skincare#categories">Categories</a>
+      <a href="/skincare#about">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="/cart" class="cart-link">
+        Bag <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+
+  </nav>
+</header>
+
+
+  <!-- HERO -->
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+
+        <div class="hero-text">
+          <div class="eyebrow">SKINCARE MADE SIMPLE</div>
+
+          <h1>Your Skin.<br>
+            Your Glow.<br>
+            <em>Your Story.</em>
+          </h1>
+
+          <p class="hero-description">
+            Discover thoughtfully selected skincare essentials
+            that make every day a little more beautiful.
+            Because healthy-looking skin starts with self-care.
+          </p>
+
+          <a href="/products" class="primary-btn">
+            EXPLORE COLLECTION →
+          </a>
+        </div>
+
+        <div class="hero-image"
+             role="img"
+             aria-label="Skincare products and natural beauty">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+
+    <section class="features">
+
+      <div class="feature">
+        <div class="feature-icon">🌿</div>
+        <h3>Thoughtful Choices</h3>
+        <p>Skincare essentials selected with care.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">✨</div>
+        <h3>Everyday Glow</h3>
+        <p>Simple products for your daily routine.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">♡</div>
+        <h3>Self-Care First</h3>
+        <p>Make a little time for yourself every day.</p>
+      </div>
+
+    </section>
+
+    <!-- CATEGORIES -->
+
+    <section class="section" id="categories">
+
+      <div class="section-heading">
+        <div class="eyebrow">FIND YOUR FAVOURITES</div>
+        <h2>Explore Our Collection</h2>
+        <p>Discover the essentials for your skincare routine.</p>
+      </div>
+
+      <div class="category-grid">
+
+        <a href="/products" class="category-card cat-one">
+          <h3>Face Care</h3>
+        </a>
+
+        <a href="/products" class="category-card cat-two">
+          <h3>Serums</h3>
+        </a>
+
+        <a href="/products" class="category-card cat-three">
+          <h3>Daily Essentials</h3>
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- BESTSELLERS -->
+
+    <section class="section" id="bestsellers">
+
+      <div class="section-heading">
+        <div class="eyebrow">LOVED BY GLOW LOVERS</div>
+        <h2>Our Bestsellers</h2>
+        <p>Meet some of our skincare favourites.</p>
+      </div>
+
+      <div class="products-grid" id="productsContainer"></div>
+
+      <div class="center-btn">
+        <a href="/products" class="primary-btn">
+          VIEW ALL PRODUCTS →
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="story" id="about">
+
+      <div class="story-content">
+
+        <div class="story-image"
+             role="img"
+             aria-label="Skincare and beauty products">
+        </div>
+
+        <div class="story-text">
+
+          <div class="eyebrow">A LITTLE ABOUT US</div>
+
+          <h2>Beauty begins with taking care of yourself.</h2>
+
+          <p>
+            At GlowSkin, we believe skincare should feel simple,
+            enjoyable and personal. Our goal is to help you discover
+            everyday essentials that fit naturally into your routine.
+          </p>
+
+          <p>
+            Take a moment for yourself, find what works for you,
+            and celebrate your own kind of glow.
+          </p>
+
+          <a href="/products" class="primary-btn">
+            DISCOVER GLOWSKIN →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CUSTOMER REVIEWS -->
+
+    <section class="section testimonials">
+
+      <div class="section-heading">
+        <div class="eyebrow">KIND WORDS</div>
+        <h2>Love From Our Community</h2>
+        <p>A little appreciation makes our day brighter.</p>
+      </div>
+
+      <div class="review-grid">
+
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>"A lovely shopping experience. I really enjoy
+            exploring the skincare collection."</p>
+          <h4>— GlowSkin Customer</h4>
+        </div>
+
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>"The website is so easy to explore and I love
+            the simple skincare collection."</p>
+          <h4>— GlowSkin Customer</h4>
+        </div>
+
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>"A beautiful collection of everyday essentials.
+            Looking forward to exploring more!"</p>
+          <h4>— GlowSkin Customer</h4>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- NEWSLETTER -->
+
+    <section class="newsletter">
+
+      <h2>A Little Glow in Your Inbox</h2>
+
+      <p>Stay connected with GlowSkin and discover what's new.</p>
+
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Enter your email address"
+               aria-label="Email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-content">
+
+      <div>
+        <div class="footer-logo">GlowSkin.</div>
+        <p>
+          Your everyday destination for skincare essentials.
+          Discover your routine, celebrate self-care and enjoy your glow.
+        </p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <div class="footer-links">
+          <a href="/webpage">Home</a>
+          <a href="/products">Products</a>
+          <a href="/cart">Shopping Bag</a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <div class="footer-links">
+          <a href="#categories">Categories</a>
+          <a href="#about">Our Story</a>
+          <a href="#bestsellers">Bestsellers</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 GlowSkin. All Rights Reserved.
+    </div>
+
+  </footer>
+
+  <div class="toast" id="toast">
+    Product added to your bag!
+  </div>
+
+  <script>
+
+    // Featured products
+
+    const products = [
+      {
+        id: 1,
+        name: "Hydrating Face Cream",
+        image: "https://anahataorganic.com/cdn/shop/files/nava-cream.jpg?v=1711188595&width=1946",
+        desc: "Everyday moisture for your skincare routine.",
+        price: 25.99
+      },
+      {
+        id: 2,
+        name: "Vitamin C Serum",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ6iMwH9C6Hy1uQdPKmbqTa_dvn18aBPJssg&s",
+        desc: "A brightening addition to your routine.",
+        price: 34.50
+      },
+      {
+        id: 3,
+        name: "Sunscreen SPF 50",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVQ5E-Osaof6FSHJSI9oycrTmRIEypi30kYw&s",
+        desc: "Daily sun protection for your skin.",
+        price: 19.99
+      },
+      {
+        id: 4,
+        name: "Gentle Face Cleanser",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGvpJwxMVgRSpWXqA-6gmkACDGWItu1uRRuQ&s",
+        desc: "A gentle start to your daily routine.",
+        price: 15.00
+      }
+    ];
+
+    // Read saved cart
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const productsContainer =
+      document.getElementById("productsContainer");
+
+    // Display featured products
+
+    function renderProducts() {
+
+      productsContainer.innerHTML = "";
+
+      products.forEach(product => {
+
+        const card = document.createElement("div");
+        card.className = "product-card";
+
+        card.innerHTML = `
+          <img src="${product.image}"
+               alt="${product.name}"
+               loading="lazy"
+               onerror="this.src='https://placehold.co/500x400/f1f0e9/344536?text=GlowSkin'">
+
+          <div class="product-info">
+
+            <div class="product-tag">GLOWSKIN FAVOURITE</div>
+
+            <h3>${product.name}</h3>
+
+            <p class="product-desc">${product.desc}</p>
+
+            <div class="product-bottom">
+
+              <span class="price">
+                $${product.price.toFixed(2)}
+              </span>
+
+              <button class="add-btn"
+                onclick="addToCart(${product.id})">
+                ADD TO BAG +
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+        productsContainer.appendChild(card);
+
+      });
+
+    }
+
+    // Update cart count
+
+    function updateCartCount() {
+
+      const count = cart.reduce(
+        (total, item) => total + item.quantity, 0
+      );
+
+      document.getElementById("cartCount").textContent = count;
+
+    }
+
+    // Add products to cart
+
+    function addToCart(id) {
+
+      const product = products.find(item => item.id === id);
+
+      const existing = cart.find(item => item.id === id);
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({
+          ...product,
+          quantity: 1
+        });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      updateCartCount();
+
+      showToast();
+
+    }
+
+    // Toast notification
+
+    function showToast() {
+
+      const toast = document.getElementById("toast");
+
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2200);
+
+    }
+
+    // Newsletter demo
+
+    document.getElementById("newsletterForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        alert("Thank you for joining the GlowSkin community!");
+
+        this.reset();
+
+      });
+
+    // Initial setup
+
+    renderProducts();
+    updateCartCount();
+
+  </script>
+
+</body>
+</html>
