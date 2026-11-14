@@ -23,7 +23,6 @@ GlowSkin is a skincare e-commerce website designed to provide users with a simpl
 - CSS3
 - JavaScript
 - Node.js
-- Express.js
 - LocalStorage
 
 📁 Project Structure
